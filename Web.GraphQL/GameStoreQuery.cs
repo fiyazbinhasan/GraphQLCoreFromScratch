@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Web.GraphQL
 {
-public class GameStoreQuery : ObjectGraphType
-{
-    public GameStoreQuery()
+    public class GameStoreQuery : ObjectGraphType
     {
-        Field<StringGraphType>(
-            name: "name",
-            resolve: context => "Steam"
-        );
+        public GameStoreQuery()
+        {
+            Field<StringGraphType>(
+                name: "name",
+                resolve: context => "Steam"
+            );
+        }
     }
-}
 }
