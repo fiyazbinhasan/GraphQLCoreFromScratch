@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GraphQL" Version="3.0.0-preview-1633" />
-    <PackageReference Include="GraphQL.NewtonsoftJson" Version="3.0.0-preview-1633" />
+    <PackageReference Include="GraphQL" Version="3.0.0-preview-1644" />
+    <PackageReference Include="GraphQL.NewtonsoftJson" Version="3.0.0-preview-1644" />
   </ItemGroup>
 
 </Project>

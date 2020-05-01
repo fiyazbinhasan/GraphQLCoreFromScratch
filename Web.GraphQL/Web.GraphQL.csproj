@@ -1,12 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GraphQL" Version="3.0.0-preview-1633" />
-    <PackageReference Include="GraphQL.NewtonsoftJson" Version="3.0.0-preview-1633" />
+    <Content Include="ApiExplorer\index.html.ejs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GraphQL" Version="3.0.0-preview-1644" />
+    <PackageReference Include="GraphQL.NewtonsoftJson" Version="3.0.0-preview-1644" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>
