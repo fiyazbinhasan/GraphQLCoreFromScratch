@@ -18,6 +18,7 @@ namespace Web.GraphQL
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
             services.AddTransient<ISchema, GameStoreSchema>();
             services.AddTransient<GameStoreQuery>();
+            services.AddTransient<ItemType>();
 
             services.AddGraphQL(options =>
             {
@@ -25,6 +26,11 @@ namespace Web.GraphQL
             });
 
             services.Configure<KestrelServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
+
+            services.Configure<IISServerOptions>(options =>
             {
                 options.AllowSynchronousIO = true;
             });

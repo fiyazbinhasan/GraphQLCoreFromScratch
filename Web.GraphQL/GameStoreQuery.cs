@@ -1,4 +1,5 @@
-﻿using GraphQL.Types;
+﻿using GraphQL;
+using GraphQL.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,16 @@ namespace Web.GraphQL
             Field<StringGraphType>(
                 name: "name",
                 resolve: context => "Steam"
+            );
+
+            Field<ItemType>(
+                "item",
+                arguments: new QueryArguments(new QueryArgument<StringGraphType> { Name = "tag" }),
+                resolve: context =>
+                {
+                    var tag = context.GetArgument<string>("tag");
+                    return new DataSource().GetItemByTag(tag);
+                }
             );
         }
     }

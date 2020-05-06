@@ -9,8 +9,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GraphQL" Version="3.0.0-preview-1644" />
-    <PackageReference Include="GraphQL.NewtonsoftJson" Version="3.0.0-preview-1644" />
+    <PackageReference Include="GraphQL" Version="3.0.0-preview-1650" />
+    <PackageReference Include="GraphQL.NewtonsoftJson" Version="3.0.0-preview-1650" />
+    <PackageReference Include="GraphQL.SystemTextJson" Version="3.0.0-preview-1650" />
   </ItemGroup>
 
   <ItemGroup>

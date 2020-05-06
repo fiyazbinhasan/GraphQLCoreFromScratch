@@ -45,6 +45,7 @@ namespace Web.GraphQL
                                 {
                                     doc.Schema = schema;
                                     doc.Query = request.Query;
+                                    doc.Inputs = request.Variables.ToInputs();
                                 }).ConfigureAwait(false);
 
                 httpContext.Response.ContentType = "application/json";
