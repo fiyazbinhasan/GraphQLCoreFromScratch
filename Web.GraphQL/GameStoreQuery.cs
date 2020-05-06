@@ -18,7 +18,7 @@ namespace Web.GraphQL
 
             Field<ItemType>(
                 "item",
-                arguments: new QueryArguments(new QueryArgument<StringGraphType> { Name = "tag" }),
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "tag" }),
                 resolve: context =>
                 {
                     var tag = context.GetArgument<string>("tag");
