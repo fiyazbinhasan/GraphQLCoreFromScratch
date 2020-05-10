@@ -9,6 +9,7 @@ namespace Web.GraphQL
         public GameStoreSchema(IServiceProvider serviceProvider) : base(serviceProvider)
         {
             Query = serviceProvider.GetRequiredService<GameStoreQuery>();
+            Mutation = serviceProvider.GetRequiredService<GameStoreMutation>();
         }
     }
 }

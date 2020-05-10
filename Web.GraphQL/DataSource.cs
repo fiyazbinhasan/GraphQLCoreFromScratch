@@ -7,9 +7,9 @@ namespace Web.GraphQL
 {
 	public class DataSource
 	{
-		public IList<Item> Items { get; set; }
+		public static IList<Item> Items { get; set; }
 
-		public DataSource()
+		static DataSource()
 		{
 			Items = new List<Item>(){
 			new Item { Tag= "cyberpunk_2077", Title="Cyberpunk 2077", Price=59.99M },
@@ -21,6 +21,12 @@ namespace Web.GraphQL
 		public Item GetItemByTag(string tag)
 		{
 			return Items.First(i => i.Tag.Equals(tag));
+		}
+
+		public Item AddItem(Item item)
+		{
+			Items.Add(item);
+			return item;
 		}
 	}
 }

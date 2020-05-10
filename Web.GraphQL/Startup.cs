@@ -18,6 +18,8 @@ namespace Web.GraphQL
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
             services.AddTransient<ISchema, GameStoreSchema>();
             services.AddTransient<GameStoreQuery>();
+            services.AddTransient<GameStoreMutation>();
+            services.AddTransient<ItemInputType>();
             services.AddTransient<ItemType>();
 
             services.AddGraphQL(options =>
