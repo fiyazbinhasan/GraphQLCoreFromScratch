@@ -9,20 +9,28 @@ namespace Web.GraphQL
 {
     public class GameStoreQuery : ObjectGraphType
     {
-        public GameStoreQuery()
+        public GameStoreQuery(IRepository repository)
         {
             Field<StringGraphType>(
                 name: "name",
                 resolve: context => "Steam"
             );
 
-            Field<ItemType>(
+            FieldAsync<ItemType>(
                 "item",
                 arguments: new QueryArguments(new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "tag" }),
-                resolve: context =>
+                resolve: async context =>
                 {
                     var tag = context.GetArgument<string>("tag");
-                    return new DataSource().GetItemByTag(tag);
+                    return await repository.GetItemByTag(tag);
+                }
+            );
+
+            FieldAsync<ListGraphType<ItemType>>(
+                "items",
+                resolve: async context =>
+                {
+                    return await repository.GetItems();
                 }
             );
         }

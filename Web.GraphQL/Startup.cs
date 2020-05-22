@@ -4,6 +4,7 @@ using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -36,6 +37,9 @@ namespace Web.GraphQL
             {
                 options.AllowSynchronousIO = true;
             });
+
+            services.AddTransient<IRepository, Repository>();
+            services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("InMemoryDb"));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
