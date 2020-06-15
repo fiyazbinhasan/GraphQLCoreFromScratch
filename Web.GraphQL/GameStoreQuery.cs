@@ -26,13 +26,27 @@ namespace Web.GraphQL
                 }
             );
 
-            FieldAsync<ListGraphType<ItemType>>(
+            FieldAsync<ListGraphType<ItemType>, List<Item>>(
                 "items",
-                resolve: async context =>
+                resolve: context =>
                 {
-                    return await repository.GetItems();
+                    return repository.GetItems();
                 }
             );
+
+            FieldAsync<ListGraphType<OrderType>, List<Order>>(
+                "orders", 
+                resolve: ctx =>
+                {
+                    return repository.GetOrders();
+                });
+
+            FieldAsync<ListGraphType<CustomerType>, List<Customer>>(
+                "customers",
+                resolve: ctx =>
+                {
+                    return repository.GetCustomers();
+                });
         }
     }
 }

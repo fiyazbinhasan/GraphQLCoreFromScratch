@@ -22,6 +22,10 @@ namespace Web.GraphQL
             services.AddTransient<GameStoreMutation>();
             services.AddTransient<ItemInputType>();
             services.AddTransient<ItemType>();
+            services.AddTransient<CustomerType>();
+            services.AddTransient<CustomerInputType>();
+            services.AddTransient<OrderType>();
+            services.AddTransient<OrderInputType>();
 
             services.AddGraphQL(options =>
             {

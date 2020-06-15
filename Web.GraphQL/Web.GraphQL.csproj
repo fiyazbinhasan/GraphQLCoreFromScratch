@@ -9,11 +9,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GraphQL" Version="3.0.0-preview-1650" />
-    <PackageReference Include="GraphQL.NewtonsoftJson" Version="3.0.0-preview-1650" />
-    <PackageReference Include="GraphQL.SystemTextJson" Version="3.0.0-preview-1650" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.4" />
+    <PackageReference Include="GraphQL" Version="3.0.0-preview-1660" />
+    <PackageReference Include="GraphQL.NewtonsoftJson" Version="3.0.0-preview-1660" />
+    <PackageReference Include="GraphQL.SystemTextJson" Version="3.0.0-preview-1660" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.5" />
   </ItemGroup>
 
   <ItemGroup>
