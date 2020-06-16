@@ -20,9 +20,9 @@ namespace Web.GraphQL
             return _applicationDbContext.Items.FirstAsync(i => i.Tag.Equals(tag));
         }
 
-        public Task<List<Item>> GetItems()
+        public async Task<IReadOnlyCollection<Item>> GetItems()
         {
-            return _applicationDbContext.Items.ToListAsync();
+            return await _applicationDbContext.Items.ToListAsync();
         }
 
         public async Task<Item> AddItem(Item item)
@@ -32,14 +32,14 @@ namespace Web.GraphQL
             return addedEntity.Entity;
         }
 
-        public Task<List<Order>> GetOrders()
+        public async Task<IReadOnlyCollection<Order>> GetOrders()
         {
-            return _applicationDbContext.Orders.AsNoTracking().ToListAsync();
+            return await _applicationDbContext.Orders.AsNoTracking().ToListAsync();
         }
 
-        public Task<List<Customer>> GetCustomers()
+        public async Task<IReadOnlyCollection<Customer>> GetCustomers()
         {
-            return _applicationDbContext.Customers.AsNoTracking().ToListAsync();
+            return await _applicationDbContext.Customers.AsNoTracking().ToListAsync();
         }
 
         public async Task<Customer> GetCustomerById(int customerId)
@@ -47,9 +47,9 @@ namespace Web.GraphQL
             return await _applicationDbContext.Customers.FindAsync(customerId);
         }
 
-        public Task<List<Order>> GetOrdersByCustomerId(int customerId)
+        public async Task<IReadOnlyCollection<Order>> GetOrdersByCustomerId(int customerId)
         {
-            return _applicationDbContext.Orders.Where(o => o.CustomerId == customerId).ToListAsync();
+            return await _applicationDbContext.Orders.Where(o => o.CustomerId == customerId).ToListAsync();
         }
 
         public async Task<Order> AddOrder(Order order)

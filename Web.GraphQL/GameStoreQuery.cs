@@ -26,7 +26,7 @@ namespace Web.GraphQL
                 }
             );
 
-            FieldAsync<ListGraphType<ItemType>, List<Item>>(
+            FieldAsync<ListGraphType<ItemType>, IReadOnlyCollection<Item>>(
                 "items",
                 resolve: context =>
                 {
@@ -34,14 +34,14 @@ namespace Web.GraphQL
                 }
             );
 
-            FieldAsync<ListGraphType<OrderType>, List<Order>>(
+            FieldAsync<ListGraphType<OrderType>, IReadOnlyCollection<Order>>(
                 "orders", 
                 resolve: ctx =>
                 {
                     return repository.GetOrders();
                 });
 
-            FieldAsync<ListGraphType<CustomerType>, List<Customer>>(
+            FieldAsync<ListGraphType<CustomerType>, IReadOnlyCollection<Customer>>(
                 "customers",
                 resolve: ctx =>
                 {

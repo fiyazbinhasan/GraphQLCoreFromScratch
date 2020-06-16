@@ -12,8 +12,8 @@
     <PackageReference Include="GraphQL" Version="3.0.0-preview-1660" />
     <PackageReference Include="GraphQL.NewtonsoftJson" Version="3.0.0-preview-1660" />
     <PackageReference Include="GraphQL.SystemTextJson" Version="3.0.0-preview-1660" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0-preview.5.20278.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.0-preview.5.20278.2" />
   </ItemGroup>
 
   <ItemGroup>

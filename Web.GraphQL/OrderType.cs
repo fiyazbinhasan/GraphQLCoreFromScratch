@@ -13,7 +13,7 @@ namespace Web.GraphQL
             Field(o => o.Tag);
             Field(o => o.CreatedAt);
 
-            FieldAsync<CustomerType, Customer>("Customer",
+            FieldAsync<CustomerType, Customer>("customer",
                 resolve: ctx =>
                 {
                     return repository.GetCustomerById(ctx.Source.CustomerId);
