@@ -20,9 +20,9 @@ namespace Web.GraphQL
             return _applicationDbContext.Items.FirstAsync(i => i.Tag.Equals(tag));
         }
 
-        public Task<List<Item>> GetItems()
+        public async Task<IReadOnlyCollection<Item>> GetItems()
         {
-            return _applicationDbContext.Items.ToListAsync();
+            return await _applicationDbContext.Items.ToListAsync();
         }
 
         public async Task<Item> AddItem(Item item)

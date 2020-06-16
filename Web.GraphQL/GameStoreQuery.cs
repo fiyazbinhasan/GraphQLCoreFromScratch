@@ -26,7 +26,7 @@ namespace Web.GraphQL
                 }
             );
 
-            FieldAsync<ListGraphType<ItemType>>(
+            FieldAsync<ListGraphType<ItemType>, IReadOnlyCollection<Item>>(
                 "items",
                 resolve: async context =>
                 {
