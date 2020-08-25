@@ -16,5 +16,9 @@ namespace Web.GraphQL
         Task<IReadOnlyCollection<Order>> GetOrdersByCustomerId(int customerId);
         Task<Order> AddOrder(Order order);
         Task<Customer> AddCustomer(Customer customer);
+        Task<Item> GetItemById(int itemId);
+        Task<Order> GetOrderById(int orderId);
+        Task<OrderItem> AddOrderItem(OrderItem orderItem);
+        Task<IReadOnlyCollection<OrderItem>> GetOrderItem();
     }
 }

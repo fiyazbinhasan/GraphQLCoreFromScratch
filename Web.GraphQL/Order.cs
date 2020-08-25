@@ -13,5 +13,6 @@ namespace Web.GraphQL
 
         public Customer Customer { get; set; }
         public int CustomerId { get; set; }
+        public IEnumerable<OrderItem> OrderItems { get; set; }
     }
 }

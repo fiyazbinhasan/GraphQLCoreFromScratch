@@ -65,5 +65,27 @@ namespace Web.GraphQL
             await _applicationDbContext.SaveChangesAsync();
             return addedCustomer.Entity;
         }
+
+        public async Task<Item> GetItemById(int itemId)
+        {
+            return await _applicationDbContext.Items.FindAsync(itemId);
+        }
+
+        public async Task<Order> GetOrderById(int orderId)
+        {
+            return await _applicationDbContext.Orders.FindAsync(orderId);
+        }
+
+        public async Task<OrderItem> AddOrderItem(OrderItem orderItem)
+        {
+            var addedOrderItem = await _applicationDbContext.OrderItem.AddAsync(orderItem);
+            await _applicationDbContext.SaveChangesAsync();
+            return addedOrderItem.Entity;
+        }
+
+        public async Task<IReadOnlyCollection<OrderItem>> GetOrderItem()
+        {
+            return await _applicationDbContext.OrderItem.AsNoTracking().ToListAsync();
+        }
     }
 }

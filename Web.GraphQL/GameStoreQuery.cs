@@ -47,6 +47,13 @@ namespace Web.GraphQL
                 {
                     return repository.GetCustomers();
                 });
+
+            FieldAsync<ListGraphType<OrderItemType>, IReadOnlyCollection<OrderItem>>(
+                "orderItem",
+                resolve: ctx =>
+                {
+                    return repository.GetOrderItem();
+                });
         }
     }
 }

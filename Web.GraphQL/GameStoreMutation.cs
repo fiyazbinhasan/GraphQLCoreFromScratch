@@ -43,6 +43,17 @@ namespace Web.GraphQL
                    var order = context.GetArgument<Order>("order");
                    return await repository.AddOrder(order);
                });
+
+            FieldAsync<OrderItemType>(
+                "addOrderItem",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<OrderItemInputType>> { Name = "orderItem" }
+                ),
+                resolve: async ctx =>
+                {
+                    var orderItem = ctx.GetArgument<OrderItem>("orderItem");
+                    return await repository.AddOrderItem(orderItem);
+                });
         }
     }
 }

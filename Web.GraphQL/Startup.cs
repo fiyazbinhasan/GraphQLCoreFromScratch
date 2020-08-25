@@ -26,6 +26,8 @@ namespace Web.GraphQL
             services.AddTransient<CustomerInputType>();
             services.AddTransient<OrderType>();
             services.AddTransient<OrderInputType>();
+            services.AddTransient<OrderItemType>();
+            services.AddTransient<OrderItemInputType>();
 
             services.AddGraphQL(options =>
             {
