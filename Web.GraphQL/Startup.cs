@@ -1,4 +1,5 @@
 using GraphQL;
+using GraphQL.DataLoader;
 using GraphQL.NewtonsoftJson;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
@@ -8,15 +9,20 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Web.GraphQL
 {
     public class Startup
     {
+        public static readonly ILoggerFactory loggerFactory = LoggerFactory.Create(builder => { builder.AddConsole(); });
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IDocumentWriter, DocumentWriter>();
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
+            services.AddSingleton<IDataLoaderContextAccessor, DataLoaderContextAccessor>(); 
+            services.AddSingleton<DataLoaderDocumentListener>();
             services.AddTransient<ISchema, GameStoreSchema>();
             services.AddTransient<GameStoreQuery>();
             services.AddTransient<GameStoreMutation>();
@@ -45,7 +51,7 @@ namespace Web.GraphQL
             });
 
             services.AddTransient<IRepository, Repository>();
-            services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("InMemoryDb"));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseLoggerFactory(loggerFactory).UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=GameStoreDb;Trusted_Connection=True;"), ServiceLifetime.Transient);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

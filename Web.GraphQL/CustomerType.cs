@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace Web.GraphQL
 {
-public class CustomerType : ObjectGraphType<Customer>
-{
-    public CustomerType(IRepository repository)
+    public class CustomerType : ObjectGraphType<Customer>
     {
-        Field(c => c.Name);
-        Field(c => c.BillingAddress);
+        public CustomerType(IRepository repository)
+        {
+            Field(c => c.Name);
+            Field(c => c.BillingAddress);
 
-        FieldAsync<ListGraphType<OrderType>, IReadOnlyCollection<Order>>(
-            "items", 
-            resolve: ctx => {
-                return repository.GetOrdersByCustomerId(ctx.Source.CustomerId);
-            });
+            FieldAsync<ListGraphType<OrderType>, IReadOnlyCollection<Order>>(
+                "orders",
+                resolve: ctx =>
+                {
+                    return repository.GetOrdersByCustomerId(ctx.Source.CustomerId);
+                });
+        }
     }
-}
 }

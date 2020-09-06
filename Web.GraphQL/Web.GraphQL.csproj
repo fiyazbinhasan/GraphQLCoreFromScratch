@@ -9,11 +9,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GraphQL" Version="3.0.0-preview-1660" />
-    <PackageReference Include="GraphQL.NewtonsoftJson" Version="3.0.0-preview-1660" />
-    <PackageReference Include="GraphQL.SystemTextJson" Version="3.0.0-preview-1660" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0-preview.5.20278.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.0-preview.5.20278.2" />
+    <PackageReference Include="GraphQL" Version="3.0.0-preview-1834" />
+    <PackageReference Include="GraphQL.NewtonsoftJson" Version="3.0.0-preview-1834" />
+    <PackageReference Include="GraphQL.SystemTextJson" Version="3.0.0-preview-1834" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0-preview.8.20407.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0-preview.8.20407.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.0-preview.8.20407.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0-preview.8.20407.4" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0-preview.8.20407.11" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0-preview.8.20407.11" />
   </ItemGroup>
 
   <ItemGroup>
