@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using GraphQL;
+using GraphQL.DataLoader;
 using GraphQL.Types;
 using GraphQL.Utilities;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
 namespace Web.GraphQL
@@ -28,7 +25,7 @@ namespace Web.GraphQL
             _options = options.Value;
         }
 
-        public async Task InvokeAsync(HttpContext httpContext, ISchema schema)
+        public async Task InvokeAsync(HttpContext httpContext, ISchema schema, IServiceProvider serviceProvider)
         {
             if (httpContext.Request.Path.StartsWithSegments(_options.EndPoint) && string.Equals(httpContext.Request.Method, "POST", StringComparison.OrdinalIgnoreCase))
             {
@@ -46,6 +43,7 @@ namespace Web.GraphQL
                                     doc.Schema = schema;
                                     doc.Query = request.Query;
                                     doc.Inputs = request.Variables.ToInputs();
+                                    doc.Listeners.Add(serviceProvider.GetRequiredService<DataLoaderDocumentListener>());
                                 }).ConfigureAwait(false);
 
                 httpContext.Response.ContentType = "application/json";
@@ -57,19 +55,6 @@ namespace Web.GraphQL
             {
                 await _next(httpContext);
             }
-        }
-    }
-
-    public static class GraphQLMiddlewareExtensions
-    {
-        public static IApplicationBuilder UseGraphQL(this IApplicationBuilder builder)
-        {
-            return builder.UseMiddleware<GraphQLMiddleware>();
-        }
-
-        public static IServiceCollection AddGraphQL(this IServiceCollection services, Action<GraphQLOptions> action)
-        {
-            return services.Configure(action);
         }
     }
 }

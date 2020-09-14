@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Web.GraphQL
@@ -20,5 +21,7 @@ namespace Web.GraphQL
         Task<Order> GetOrderById(int orderId);
         Task<OrderItem> AddOrderItem(OrderItem orderItem);
         Task<IReadOnlyCollection<OrderItem>> GetOrderItem();
+        Task<IDictionary<int, Customer>> GetCustomersById(IEnumerable<int> ids, CancellationToken cancellationToken);
+        Task<ILookup<int, Order>> GetOrdersByCustomerId(IEnumerable<int> customerIds, CancellationToken cancellationToken);
     }
 }

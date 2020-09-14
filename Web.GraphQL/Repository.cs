@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Web.GraphQL
@@ -86,6 +87,17 @@ namespace Web.GraphQL
         public async Task<IReadOnlyCollection<OrderItem>> GetOrderItem()
         {
             return await _applicationDbContext.OrderItem.AsNoTracking().ToListAsync();
+        }
+
+        public async Task<IDictionary<int, Customer>> GetCustomersById(IEnumerable<int> ids, CancellationToken cancellationToken)
+        {
+            return await _applicationDbContext.Customers.Where(c => ids.Contains(c.CustomerId)).AsNoTracking().ToDictionaryAsync(c => c.CustomerId);
+        }
+
+        public async Task<ILookup<int, Order>> GetOrdersByCustomerId(IEnumerable<int> customerIds, CancellationToken cancellationToken)
+        {
+            var orders = await _applicationDbContext.Orders.Where(i => customerIds.Contains(i.CustomerId)).ToListAsync();
+            return orders.ToLookup(i => i.CustomerId);
         }
     }
 }

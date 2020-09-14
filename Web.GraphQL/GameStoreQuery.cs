@@ -1,4 +1,5 @@
 ﻿using GraphQL;
+using GraphQL.DataLoader;
 using GraphQL.Types;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace Web.GraphQL
 {
     public class GameStoreQuery : ObjectGraphType
     {
-        public GameStoreQuery(IRepository repository)
+        public GameStoreQuery(IRepository repository, IDataLoaderContextAccessor accessor)
         {
             Field<StringGraphType>(
                 name: "name",
@@ -26,13 +27,13 @@ namespace Web.GraphQL
                 }
             );
 
-            FieldAsync<ListGraphType<ItemType>, IReadOnlyCollection<Item>>(
-                "items",
-                resolve: context =>
+            Field<ListGraphType<ItemType>, IReadOnlyCollection<Item>>()
+                .Name("items")
+                .ResolveAsync(ctx =>
                 {
-                    return repository.GetItems();
-                }
-            );
+                    var loader = accessor.Context.GetOrAddLoader("GetAllItems", repository.GetItems);
+                    return loader.LoadAsync();
+                });
 
             FieldAsync<ListGraphType<OrderType>, IReadOnlyCollection<Order>>(
                 "orders", 
