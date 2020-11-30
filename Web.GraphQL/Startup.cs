@@ -20,7 +20,7 @@ namespace Web.GraphQL
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IDocumentWriter, DocumentWriter>();
-            services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
+            services.AddSingleton<IDocumentExecuter, SerialDocumentExecuter>();
             services.AddSingleton<IDataLoaderContextAccessor, DataLoaderContextAccessor>(); 
             services.AddSingleton<DataLoaderDocumentListener>();
             services.AddTransient<ISchema, GameStoreSchema>();
