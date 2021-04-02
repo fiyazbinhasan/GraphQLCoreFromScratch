@@ -1,6 +1,7 @@
 ﻿using System;
 using GraphQL.Types;
 using GraphQL.Utilities;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Web.GraphQL
 {
