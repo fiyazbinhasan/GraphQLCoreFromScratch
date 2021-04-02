@@ -1,6 +1,4 @@
-﻿using GraphQL.Types;
-
-namespace Web.GraphQL
+﻿namespace Web.GraphQL
 {
     public class GraphQLOptions
     {

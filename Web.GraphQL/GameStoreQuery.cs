@@ -1,9 +1,6 @@
 ﻿using GraphQL;
 using GraphQL.Types;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Web.GraphQL
 {
@@ -35,7 +32,7 @@ namespace Web.GraphQL
             );
 
             FieldAsync<ListGraphType<OrderType>, IReadOnlyCollection<Order>>(
-                "orders", 
+                "orders",
                 resolve: ctx =>
                 {
                     return repository.GetOrders();

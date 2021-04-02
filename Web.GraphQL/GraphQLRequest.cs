@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using GraphQL.SystemTextJson;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using GraphQL.SystemTextJson;
 
 namespace Web.GraphQL
 {
