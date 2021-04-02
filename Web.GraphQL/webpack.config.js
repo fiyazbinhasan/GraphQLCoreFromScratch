@@ -64,9 +64,5 @@ module.exports = {
     devServer: {
         hot: true,
         allowedHosts: ["localhost:5000"],
-    },
-    node: {
-        fs: "empty",
-        module: "empty",
-    },
+    }
 };
