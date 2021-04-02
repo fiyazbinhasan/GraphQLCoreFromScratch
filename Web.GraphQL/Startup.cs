@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -21,7 +20,7 @@ namespace Web.GraphQL
         {
             services.AddSingleton<IDocumentWriter, DocumentWriter>();
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
-            services.AddSingleton<IDataLoaderContextAccessor, DataLoaderContextAccessor>(); 
+            services.AddSingleton<IDataLoaderContextAccessor, DataLoaderContextAccessor>();
             services.AddSingleton<DataLoaderDocumentListener>();
             services.AddTransient<ISchema, GameStoreSchema>();
             services.AddTransient<GameStoreQuery>();

@@ -1,4 +1,5 @@
 ﻿#region More advanced schema and queries
+
 //  var schema = Schema.For(@"
 //        type Query {
 //            game: Playable
@@ -51,4 +52,5 @@
 //      public decimal Price(Playable playable) => playable.Price;
 //      public string Status(Playable playable) => playable.IsOnSale ? "On Sale" : "Regular Price";
 //  }
-#endregion
+
+#endregion More advanced schema and queries

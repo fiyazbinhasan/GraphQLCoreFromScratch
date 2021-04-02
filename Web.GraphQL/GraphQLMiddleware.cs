@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
-using GraphQL;
+﻿using GraphQL;
 using GraphQL.Types;
-using GraphQL.Utilities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using System;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace Web.GraphQL
 {

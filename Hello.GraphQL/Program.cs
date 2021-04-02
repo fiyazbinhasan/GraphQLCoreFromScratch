@@ -1,14 +1,14 @@
-﻿using System;
-using System.Threading.Tasks;
-using GraphQL;
-using GraphQL.Types;
+﻿using GraphQL;
 using GraphQL.NewtonsoftJson;
+using GraphQL.Types;
+using System;
+using System.Threading.Tasks;
 
 namespace Hello.GraphQL
 {
-    class Program
+    internal class Program
     {
-        static async Task Main(string[] args)
+        private static async Task Main(string[] args)
         {
             /* Schema first approach */
             var schemaFirst = Schema.For(@"
@@ -24,8 +24,8 @@ namespace Hello.GraphQL
             {
                 _.Query = "{ hello }";
                 _.Root = new { Hello = "world" };
-            }); 
-            
+            });
+
             var codeFirstJson = await codeFirst.ExecuteAsync(_ =>
             {
                 _.Query = "{ hello }";
@@ -38,7 +38,7 @@ namespace Hello.GraphQL
         }
     }
 
-    class HelloWorldQuery : ObjectGraphType
+    internal class HelloWorldQuery : ObjectGraphType
     {
         public HelloWorldQuery()
         {
