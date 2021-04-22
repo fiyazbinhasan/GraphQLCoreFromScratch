@@ -9,18 +9,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GraphQL" Version="4.2.0" />
-    <PackageReference Include="GraphQL.DataLoader" Version="4.2.0" />
-    <PackageReference Include="GraphQL.NewtonsoftJson" Version="4.2.0" />
-    <PackageReference Include="GraphQL.SystemReactive" Version="4.2.0" />
-    <PackageReference Include="GraphQL.SystemTextJson" Version="4.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.4">
+    <PackageReference Include="GraphQL" Version="4.4.0" />
+    <PackageReference Include="GraphQL.DataLoader" Version="4.4.0" />
+    <PackageReference Include="GraphQL.NewtonsoftJson" Version="4.4.0" />
+    <PackageReference Include="GraphQL.SystemReactive" Version="4.4.0" />
+    <PackageReference Include="GraphQL.SystemTextJson" Version="4.4.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
   </ItemGroup>
