@@ -1,4 +1,5 @@
-﻿using GraphQL;
+using GraphQL;
+using GraphQL.DataLoader;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -25,7 +26,7 @@ namespace Web.GraphQL
             _options = options.Value;
         }
 
-        public async Task InvokeAsync(HttpContext httpContext, ISchema schema)
+        public async Task InvokeAsync(HttpContext httpContext, ISchema schema, IServiceProvider serviceProvider)
         {
             if (httpContext.Request.Path.StartsWithSegments(_options.EndPoint) && string.Equals(httpContext.Request.Method, "POST", StringComparison.OrdinalIgnoreCase))
             {
@@ -43,6 +44,7 @@ namespace Web.GraphQL
                                     doc.Schema = schema;
                                     doc.Query = request.Query;
                                     doc.Inputs = request.Variables.ToInputs();
+                                    doc.Listeners.Add(serviceProvider.GetRequiredService<DataLoaderDocumentListener>());
                                 }).ConfigureAwait(false);
 
                 httpContext.Response.ContentType = "application/json";

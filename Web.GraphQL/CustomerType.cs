@@ -1,20 +1,22 @@
-﻿using GraphQL.Types;
+﻿using GraphQL.DataLoader;
+using GraphQL.Types;
 using System.Collections.Generic;
 
 namespace Web.GraphQL
 {
     public class CustomerType : ObjectGraphType<Customer>
     {
-        public CustomerType(IRepository repository)
+        public CustomerType(IRepository repository, IDataLoaderContextAccessor accessor)
         {
             Field(c => c.Name);
             Field(c => c.BillingAddress);
 
-            FieldAsync<ListGraphType<OrderType>, IReadOnlyCollection<Order>>(
-                "orders",
-                resolve: ctx =>
+            Field<ListGraphType<OrderType>, IEnumerable<Order>>()
+                .Name("orders")
+                .ResolveAsync(ctx =>
                 {
-                    return repository.GetOrdersByCustomerId(ctx.Source.CustomerId);
+                    var loader = accessor.Context.GetOrAddCollectionBatchLoader<int, Order>("GetOrdersByCustomerId", repository.GetOrdersByCustomerId);
+                    return loader.LoadAsync(ctx.Source.CustomerId);
                 });
         }
     }
