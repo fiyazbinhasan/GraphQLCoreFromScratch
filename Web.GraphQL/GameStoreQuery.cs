@@ -1,5 +1,6 @@
 ﻿using GraphQL;
 using GraphQL.DataLoader;
+using GraphQL.Relay.Types;
 using GraphQL.Types;
 using System.Collections.Generic;
 
@@ -24,12 +25,13 @@ namespace Web.GraphQL
                 }
             );
 
-            Field<ListGraphType<ItemType>, IReadOnlyCollection<Item>>()
+            Connection<ItemType>()
                 .Name("items")
-                .ResolveAsync(ctx =>
+                .PageSize(10)
+                .ResolveAsync(async ctx =>
                 {
                     var loader = accessor.Context.GetOrAddLoader("GetAllItems", repository.GetItems);
-                    return loader.LoadAsync();
+                    return ConnectionUtils.ToConnection(await loader.LoadAsync().GetResultAsync(), ctx);
                 });
 
             FieldAsync<ListGraphType<OrderType>, IReadOnlyCollection<Order>>(

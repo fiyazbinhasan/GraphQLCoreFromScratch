@@ -1,22 +1,14 @@
 ﻿using GraphQL;
+using GraphQL.Relay.Types;
 using GraphQL.Types;
 
 namespace Web.GraphQL
 {
-    public class GameStoreMutation : ObjectGraphType
+    public class GameStoreMutation : MutationGraphType
     {
         public GameStoreMutation(IRepository repository)
         {
-            FieldAsync<ItemType>(
-                "createItem",
-                arguments: new QueryArguments(
-                    new QueryArgument<NonNullGraphType<ItemInputType>> { Name = "item" }
-                ),
-                resolve: async context =>
-                {
-                    var item = context.GetArgument<Item>("item");
-                    return await repository.AddItem(item);
-                });
+            Mutation<CreateItemInput, CreateItemPayload>("createItem");
 
             FieldAsync<CustomerType>(
                "createCustomer",

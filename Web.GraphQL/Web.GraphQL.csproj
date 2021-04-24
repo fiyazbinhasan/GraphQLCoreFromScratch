@@ -12,6 +12,7 @@
     <PackageReference Include="GraphQL" Version="4.4.0" />
     <PackageReference Include="GraphQL.DataLoader" Version="4.4.0" />
     <PackageReference Include="GraphQL.NewtonsoftJson" Version="4.4.0" />
+    <PackageReference Include="GraphQL.Relay" Version="0.6.0-pre3" />
     <PackageReference Include="GraphQL.SystemReactive" Version="4.4.0" />
     <PackageReference Include="GraphQL.SystemTextJson" Version="4.4.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />

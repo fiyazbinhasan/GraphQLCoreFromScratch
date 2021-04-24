@@ -1,14 +1,20 @@
 using GraphQL;
 using GraphQL.DataLoader;
+using GraphQL.Execution;
 using GraphQL.NewtonsoftJson;
+using GraphQL.Relay.Types;
+using GraphQL.Server;
 using GraphQL.Types;
+using GraphQL.Types.Relay;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace Web.GraphQL
 {
@@ -25,7 +31,8 @@ namespace Web.GraphQL
             services.AddTransient<ISchema, GameStoreSchema>();
             services.AddTransient<GameStoreQuery>();
             services.AddTransient<GameStoreMutation>();
-            services.AddTransient<ItemInputType>();
+            services.AddTransient<CreateItemInput>();
+            services.AddTransient<CreateItemPayload>();
             services.AddTransient<ItemType>();
             services.AddTransient<CustomerType>();
             services.AddTransient<CustomerInputType>();
@@ -33,6 +40,11 @@ namespace Web.GraphQL
             services.AddTransient<OrderInputType>();
             services.AddTransient<OrderItemType>();
             services.AddTransient<OrderItemInputType>();
+
+            services.AddTransient(typeof(ConnectionType<>))
+                .AddTransient(typeof(EdgeType<>))
+                .AddTransient<NodeInterface>()
+                .AddTransient<PageInfoType>();
 
             services.AddGraphQL(options =>
             {
@@ -50,7 +62,7 @@ namespace Web.GraphQL
             });
 
             services.AddTransient<IRepository, Repository>();
-            services.AddDbContext<ApplicationDbContext>(options => options.UseLoggerFactory(loggerFactory).UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=GameStoreDb;Trusted_Connection=True;"), ServiceLifetime.Transient);
+            services.AddDbContext<ApplicationDbContext>(options => options.UseLoggerFactory(loggerFactory).UseInMemoryDatabase(@"GameStoreDb"), ServiceLifetime.Transient);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
