@@ -19,4 +19,4 @@ Learn how to implement scalable APIs with GraphQL and ASP.NET Core. Branch-wise 
 
 # Like this repo?
 
-Show your support by simply put a star on the repository.
+Show your support by simply putting a star on the repository.
