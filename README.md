@@ -17,6 +17,6 @@ Learn how to implement scalable APIs with GraphQL and ASP.NET Core. Branch-wise 
 | [Part XI](https://github.com/fiyazbinhasan/GraphQLCoreFromScratch/tree/Part-XI-DataLoader) | [GraphQL with .NET Core (Part - XI: Data Loader)](https://fiyazhasan.me/graphql-with-net-core-part-xi-dataloader/) |
 | [Part XII](https://github.com/fiyazbinhasan/GraphQLCoreFromScratch/tree/Part-XII-Relay) | [GraphQL with .NET Core (Part - XII: Relay)](https://fiyazhasan.me/graphql-with-net-core-part-xii-relay/) |
 
-### Like this repo?
+# Like this repo?
 
 Show your support by simply put a star on the repository.
