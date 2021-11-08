@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "graphiql": "^1.0.0-alpha.8",
+    "graphiql": "^1.4.7",
     "graphql": "^15.0.0",
     "isomorphic-fetch": "^2.2.1",
     "react": "^16.13.1",
